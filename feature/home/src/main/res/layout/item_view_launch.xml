@@ -7,7 +7,7 @@
 
         <variable
             name="launch"
-            type="com.lush.rocketlaunches.domain.model.Launch" />
+            type="com.test.rocketlaunches.domain.model.Launch" />
 
     </data>
 
