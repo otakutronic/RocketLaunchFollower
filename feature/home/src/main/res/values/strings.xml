@@ -1,0 +1,5 @@
+<resources>
+    <string name="image_with_mission_patch">Image with mission patch</string>
+    <string name="launch_date_null">No launch date provided</string>
+    <string name="launch_success">Success:</string>
+</resources>

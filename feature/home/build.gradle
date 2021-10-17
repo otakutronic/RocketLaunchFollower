@@ -1,0 +1,97 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.luch.rocketlaunches.home"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    // Androidx View
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.legacy:legacy-support-v4:$legacyVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    // Androidx Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion"
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "androidx.core:core-ktx:$coreVersion"
+
+    // koin
+    implementation "io.insert-koin:koin-android:$koinVersion"
+
+    // glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    //// START: Testing packages
+
+    // Arch Test
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
+
+    // Coroutines
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+
+    // JUnit Test & Rules
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test:core:$testVersion"
+    androidTestImplementation "androidx.test:runner:$testVersion"
+    androidTestImplementation "androidx.test:rules:$testVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+
+    // JUnit Truth Assertions
+    androidTestImplementation "androidx.test.ext:truth:$testVersion"
+    androidTestImplementation 'com.google.truth:truth:1.0.1'
+
+    // Mock Test
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$mockitoVersion"
+
+    // Instrumentation Tests
+    androidTestImplementation "org.hamcrest:hamcrest-library:2.2"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:2.2.0"
+
+    // Koin
+    testImplementation "io.insert-koin:koin-test:$koinVersion"
+
+    //// END
+
+    implementation project(":app")
+    implementation project(path: ':data')
+    implementation project(path: ':domain')
+}

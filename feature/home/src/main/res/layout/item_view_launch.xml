@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="launch"
+            type="com.lush.rocketlaunches.domain.model.Launch" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:id="@+id/text_mission_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxWidth="240dp"
+            android:maxLines="1"
+            android:text="@{launch.missionName}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintStart_toEndOf="@+id/image_mission_patch"
+            app:layout_constraintTop_toTopOf="@+id/image_mission_patch"
+            tools:text="Falcon 9 Test Flight" />
+
+        <TextView
+            android:id="@+id/text_launch_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_mission_name"
+            app:date="@{launch.date}"
+            app:layout_constraintStart_toStartOf="@+id/text_mission_name"
+            app:layout_constraintTop_toBottomOf="@+id/text_mission_name"
+            tools:text="2007-03-21T01:10:00.000Z" />
+
+        <TextView
+            android:id="@+id/text_label_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_mission_name"
+            android:text="@string/launch_success"
+            app:layout_constraintStart_toStartOf="@+id/text_launch_date"
+            app:layout_constraintTop_toBottomOf="@+id/text_launch_date"
+            tools:text="Success:" />
+
+        <ImageView
+            android:id="@+id/image_mission_patch"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/image_with_mission_patch"
+            android:scaleType="fitCenter"
+            app:imageURL="@{launch.imageUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_launch_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@{launch.success ? @drawable/ic_tick : @drawable/ic_cross}"
+            app:layout_constraintBottom_toBottomOf="@+id/text_label_success"
+            app:layout_constraintStart_toEndOf="@+id/text_label_success"
+            app:layout_constraintTop_toTopOf="@+id/text_label_success" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
